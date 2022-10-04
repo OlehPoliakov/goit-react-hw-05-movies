@@ -1,6 +1,6 @@
 .HeaderWrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-image: linear-gradient(
     90deg,
@@ -8,7 +8,7 @@
     rgba(9, 24, 121, 0.9) 43%,
     rgba(0, 212, 255, 1) 100%
   );
-  padding: 50px;
+  padding: 50px 0;
   text-shadow: 1px 0 1px #8c1b21, 0 1px 1px #8c1b21, -1px 0 1px #8c1b21,
     0 -1px 1px #8c1b21;
 }
@@ -16,13 +16,11 @@
 .LogoWrapper {
   display: flex;
   align-items: center;
-  margin-right: 50px;
 }
 
 .CustomIcon {
   width: 40px;
   height: 40px;
-  margin-right: 15px;
   color: teal;
 }
 
@@ -46,7 +44,7 @@
 .Item {
   margin-right: 25px;
 
-  :last-child {
+  &:last-child {
     margin-right: 0;
   }
 }

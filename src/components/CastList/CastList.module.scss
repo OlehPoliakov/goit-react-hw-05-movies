@@ -1,7 +1,7 @@
 .List {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 48px;
+  grid-gap: 32px;
   align-items: center;
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
@@ -19,11 +19,9 @@
 .PhotoWrapper {
   display: flex;
   align-items: center;
-  height: 375px;
 }
 
 .Photo {
-  width: 250px;
   border-radius: 2px;
   box-shadow: 0 0 5px rgba(107, 46, 6, 0.7);
 }

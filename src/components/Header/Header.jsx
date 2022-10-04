@@ -12,7 +12,7 @@ function Header({ title }) {
       </div>
       <ul className={styles.NavigationList}>
         <li className={styles.Item}>
-          <NavLink className={styles.CustomLink} to="/">
+          <NavLink className={styles.CustomLink} end to="/">
             Home
           </NavLink>
         </li>

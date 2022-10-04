@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import SearchBar from 'components/SearchBar';
-import Container from 'components/Container';
 import MoviesList from 'components/MoviesList';
 import { getSearchMovies } from 'services/api';
+import LoadMoreButton from 'components/LoadMoreButton';
 
 function MoviesPage() {
   const { search } = useLocation();
@@ -38,11 +38,7 @@ function MoviesPage() {
   return (
     <>
       <SearchBar />
-      {movies && (
-        <Container isPadding>
-          <MoviesList movies={movies} />
-        </Container>
-      )}
+      {movies && <MoviesList movies={movies}></MoviesList>}
     </>
   );
 }

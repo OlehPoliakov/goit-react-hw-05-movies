@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Container from 'components/Container';
 import MoviesList from 'components/MoviesList';
 import { getTrending } from 'services/api';
 
@@ -28,13 +27,7 @@ function HomePage() {
     });
   }, []);
 
-  return (
-    movies && (
-      <Container>
-        <MoviesList movies={movies} />
-      </Container>
-    )
-  );
+  return movies && <MoviesList movies={movies} />;
 }
 
 export default HomePage;
