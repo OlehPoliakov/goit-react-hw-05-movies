@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import SearchBar from 'components/SearchBar';
 import MoviesList from 'components/MoviesList';
 import { getSearchMovies } from 'services/api';
-import LoadMoreButton from 'components/LoadMoreButton';
 
 function MoviesPage() {
   const { search } = useLocation();
