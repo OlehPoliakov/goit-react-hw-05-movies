@@ -1,0 +1,189 @@
+.MuvieDetailsWrapper {
+  padding: 20px 0;
+}
+
+.ButtonGoBack {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  opacity: 0.9;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    0deg,
+    rgb(33, 51, 251) 0%,
+    rgba(0, 0, 0, 0.846) 100%
+  );
+  color: #fff;
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+    transform: scale(1.1);
+    color: #1109f0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .Label {
+    margin-left: 10px;
+  }
+}
+
+.MainWrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.Poster {
+  width: 300px;
+  border-radius: 4px;
+  filter: saturate(150%);
+  box-shadow: 0 0 20px rgba(107, 46, 6, 0.7);
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
+}
+
+.InfoWrapper {
+  @media (min-width: 768px) {
+    margin-left: 50px;
+  }
+}
+
+.TitleWrapper {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.75);
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.Title {
+  margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    font-size: 25px;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 50px;
+    margin-bottom: 0;
+  }
+}
+
+.ReleaseDate {
+  font-weight: 700;
+  font-size: 15px;
+  color: grey;
+
+  @media (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+
+.GenresList {
+  margin-bottom: 50px;
+  display: flex;
+  color: teal;
+}
+
+.GenresItem {
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 15px;
+
+  :last-child {
+    margin-right: 0;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+
+.Description {
+  line-height: 2;
+  font-size: 15px;
+  margin-bottom: 50px;
+  color: grey;
+
+  @media (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+
+.VoteWrapper {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.VoteAverage {
+  padding: 10px 0;
+}
+
+.VoteCount {
+  padding: 10px 0;
+}
+
+.Value {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+// .AdditionalWrapper {
+// }
+
+.AdditionalTitle {
+  text-align: center;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 24, 121, 0.9) 43%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+  padding: 15px;
+  margin-bottom: 30px;
+  text-shadow: 1px 0 1px #8c1b21, 0 1px 1px #8c1b21, -1px 0 1px #8c1b21,
+    0 -1px 1px #8c1b21;
+}
+
+.NavigationsList {
+}
+
+.NavigationsItem {
+  margin-bottom: 15px;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.CustomLink {
+  font-size: 18px;
+}
+.active {
+  color: #8c1b21;
+}
