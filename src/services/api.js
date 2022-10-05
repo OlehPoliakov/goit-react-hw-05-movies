@@ -1,48 +1,78 @@
-const key = '57c4f7b58ce81ca7bd804351e71dcbc7';
-const url = `https://api.themoviedb.org/3`;
+import axios from 'axios';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+const apiKey = '57c4f7b58ce81ca7bd804351e71dcbc7';
+
+// Фетч трендов
+export const fetchTrends = async () => {
+  try {
+    const { data } = await axios.get(`trending/movie/day?api_key=${apiKey}`);
+    const trends = data.results;
+
+    return trends;
+  } catch (error) {
+    console.error('Smth wrong with fetch trends in api', error);
+  }
+};
+
+// Фетч по поиску
+export const fetchMoviesBySearch = async (searchQuery, currentPage) => {
+  try {
+    const { data } = await axios.get(
+      `search/movie?api_key=${apiKey}&query=${searchQuery}&page=${currentPage}&language=en-US`
+    );
+
+    const results = data.results;
+
+    return results;
+  } catch (error) {
+    console.error('Smth wrong with fetch movie search in api', error);
+  }
+};
+
+// Фетч фильма по id
+const fetchMovieById = async id => {
+  try {
+    const { data } = await axios.get(
+      `/movie/${id}?api_key=${apiKey}&language=en-US`
+    );
+
+    return data;
+  } catch (error) {
+    console.error('Smth wrong with fetch movie id in api', error);
+  }
+};
 
 // Фетч актёров для фильма
-export const getMovieCredits = async movieId => {
-  const filter = `/movie/${movieId}/credits?api_key=${key}&language=en-US`;
+export const fetchCast = async id => {
+  try {
+    const { data } = await axios.get(
+      `/movie/${id}/credits?api_key=${apiKey}&language=en-US`
+    );
 
-  const response = await fetch(`${url}${filter}`);
-  const data = await response.json();
-
-  return data;
+    return data;
+  } catch (error) {
+    console.error('Smth wrong with fetch cast in api', error);
+  }
 };
-// Фетч фильма по id
-export const getMovieDetails = async movieId => {
-  const filter = `/movie/${movieId}?api_key=${key}&language=en-US`;
 
-  const response = await fetch(`${url}${filter}`);
-  const data = await response.json();
-
-  return data;
-};
 // Фетч отзывов на фильм
-export const getMovieReviews = async movieId => {
-  const filter = `/movie/${movieId}/reviews?api_key=${key}&language=en-US&page=1`;
+export const fetchReviews = async id => {
+  try {
+    const { data } = await axios.get(
+      `/movie/${id}/reviews?api_key=${apiKey}&language=en-US&page=1`
+    );
 
-  const response = await fetch(`${url}${filter}`);
-  const data = await response.json();
-
-  return data;
+    return data;
+  } catch (error) {
+    console.error('Smth wrong with fetch reviews in api', error);
+  }
 };
-// Фетч по поиску
-export const getSearchMovies = async (query, page = 1) => {
-  const filter = `/search/movie?api_key=${key}&query=${query}&language=en-US&page=${page}&include_adult=false`;
 
-  const response = await fetch(`${url}${filter}`);
-  const data = await response.json();
-
-  return data;
-};
-// Фетч трендов
-export const getTrending = async () => {
-  const filter = `/trending/all/day?api_key=${key}`;
-
-  const response = await fetch(`${url}${filter}`);
-  const data = await response.json();
-
-  return data;
+// eslint-disable-next-line
+export default {
+  fetchTrends,
+  fetchMoviesBySearch,
+  fetchMovieById,
+  fetchCast,
+  fetchReviews,
 };

@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
-
+import { FaChevronLeft } from 'react-icons/fa';
 import styles from './GoBackButton.module.scss';
 
-const GoBackButton = ({ onBack }) => (
-  <button type="button" className={styles.button} onClick={onBack}>
-    Go back
+const GoBackButton = ({ onGoBack }) => (
+  <button className={styles.ButtonGoBack} type="button" onClick={onGoBack}>
+    <FaChevronLeft />
+    <span className={styles.Label}>Go back</span>
   </button>
 );
 
 GoBackButton.propTypes = {
-  onBack: PropTypes.func.isRequired,
+  onGoBack: PropTypes.func.isRequired,
 };
 
 export default GoBackButton;

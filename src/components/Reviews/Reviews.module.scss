@@ -1,5 +1,5 @@
 .list {
-  margin-top: 16px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,5 +20,14 @@
 
 .text {
   line-height: 2;
-  color: rgba(0, 0, 0, 0.75);
+  color: gainsboro;
+}
+
+.Author {
+  color: wheat;
+  text-shadow: 1px 0 1px black, 0 1px 1px black, -1px 0 1px black;
+}
+
+.Content {
+  color: gainsboro;
 }

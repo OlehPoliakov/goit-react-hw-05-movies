@@ -4,7 +4,7 @@
   align-items: center;
   padding: 50px 0 50px 0;
   :focus {
-    border-color: #1109f0;
+    border-color: #50c878;
   }
 }
 
@@ -38,7 +38,11 @@
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
-  background: blue;
+  background: linear-gradient(
+    0deg,
+    rgb(33, 51, 251) 0%,
+    rgba(0, 0, 0, 0.846) 100%
+  );
   color: #fff;
   overflow: hidden;
 

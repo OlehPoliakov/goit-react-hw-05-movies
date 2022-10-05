@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Container from 'components/Container';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import AppBar from 'components/AppBar';
+import AppFooter from 'components/AppFooter';
 import Loader from 'components/Loader';
 
 const Layout = () => {
   return (
     <>
-      <Header title="Kinopoisk" />
+      <AppBar />
 
       <Container>
         <Suspense fallback={<Loader />}>
@@ -16,7 +16,7 @@ const Layout = () => {
         </Suspense>
       </Container>
 
-      <Footer />
+      <AppFooter />
     </>
   );
 };

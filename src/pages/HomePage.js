@@ -1,33 +1,62 @@
 import { useState, useEffect } from 'react';
 import MoviesList from 'components/MoviesList';
-import { getTrending } from 'services/api';
+import Message from 'components/Message';
+import Loader from 'components/Loader';
 
-function HomePage() {
-  const [movies, setMovies] = useState(null);
+import api from 'services/api';
 
+const HomePage = () => {
+  const [trends, setTrends] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  // eslint-disable-next-line
+  const [error, setError] = useState('');
+
+  // Срабатывает при маунте
   useEffect(() => {
-    getTrending().then(({ results }) => {
-      const moviesArr = [];
-
-      results.map(
-        ({ id, original_title, poster_path, vote_average, vote_count }) => {
-          const movie = {
-            id,
-            title: original_title,
-            poster: poster_path,
-            voteAverage: vote_average,
-            voteCount: vote_count,
-          };
-
-          return moviesArr.push(movie);
-        }
-      );
-
-      setMovies(moviesArr);
-    });
+    fetchData();
   }, []);
 
-  return movies && <MoviesList movies={movies} />;
-}
+  // Запрос за трендами при маунте
+  const fetchData = async () => {
+    setLoading(true);
+
+    try {
+      const movies = await api.fetchTrends();
+
+      setTrends(movies);
+    } catch (error) {
+      console.error('Smth wrong with homepage trends fetch', error);
+      setError(error.message); // Почему не пишет?
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main>
+      <h1
+        style={{
+          textAlign: 'center',
+          color: 'wheat',
+          fontSize: '36px',
+          textShadow: '1px 0 1px black',
+        }}
+      >
+        Trends of the day
+      </h1>
+      {trends ? (
+        <MoviesList movies={trends} />
+      ) : (
+        <Message>
+          <h2>
+            The service is temporarily unavailable. Please try again later.
+          </h2>
+        </Message>
+      )}
+
+      {isLoading && <Loader />}
+    </main>
+  );
+};
 
 export default HomePage;

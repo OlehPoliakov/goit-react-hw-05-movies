@@ -1,45 +1,73 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SearchBar from 'components/SearchBar';
 import MoviesList from 'components/MoviesList';
-import { getSearchMovies } from 'services/api';
+import LoadMoreButton from 'components/LoadMoreButton';
+import Loader from 'components/Loader';
 
-function MoviesPage() {
-  const { search } = useLocation();
-  const query = new URLSearchParams(search).get('query') ?? '';
+import api from 'services/api';
+// Компонент страницы поиска фильмов
+const MoviesPage = () => {
+  const [movies, setMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(false);
+  // eslint-disable-next-line
+  const [error, setError] = useState(null);
 
-  const [movies, setMovies] = useState(null);
-
+  // При монтировании делает запрос за фильмами. Если в searchQuery пусто то ничего не делает.
   useEffect(() => {
-    if (query !== '') {
-      getSearchMovies(query).then(({ results }) => {
-        const moviesArr = [];
+    if (!searchQuery) return;
+    getMovies();
+    // eslint-disable-next-line
+  }, [searchQuery]);
 
-        results.map(
-          ({ id, original_title, poster_path, vote_average, vote_count }) => {
-            const movie = {
-              id,
-              title: original_title,
-              poster: poster_path,
-              voteAverage: vote_average,
-              voteCount: vote_count,
-            };
+  // Фетч фильма по запросу из инпута
+  const getMovies = async () => {
+    setLoading(true);
 
-            return moviesArr.push(movie);
-          }
-        );
+    try {
+      const results = await api.fetchMoviesBySearch(searchQuery, page);
 
-        setMovies(moviesArr);
-      });
+      if (results.length === 0) {
+        toast.info('Nothing found 🙄', {
+          autoClose: 2000,
+        });
+      }
+
+      setMovies(prev => [...prev, ...results]);
+      setPage(prev => prev + 1);
+      setLoading(true);
+    } catch (error) {
+      console.error('Smth wrong with search fetch', error);
+      setError({ error }); // Почему не пишет?
+    } finally {
+      setLoading(false);
     }
-  }, [query]);
+  };
+
+  // Принимает запрос с инпута и пишет его в стейт
+  const onChangeQuery = query => {
+    setMovies([]);
+    setSearchQuery(query);
+    setPage(1);
+    setError(null);
+  };
 
   return (
     <>
-      <SearchBar />
-      {movies && <MoviesList movies={movies}></MoviesList>}
+      <SearchBar onSearch={onChangeQuery} />
+
+      <MoviesList movies={movies} />
+
+      {movies.length > 0 && <LoadMoreButton onClick={getMovies} />}
+
+      {isLoading && <Loader />}
+
+      <ToastContainer position="top-right" theme="colored" />
     </>
   );
-}
+};
 
 export default MoviesPage;

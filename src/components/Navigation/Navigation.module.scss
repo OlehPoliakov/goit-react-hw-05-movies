@@ -1,16 +1,8 @@
-.HeaderWrapper {
+// Стили главной навигации
+.Nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 24, 121, 0.9) 43%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  padding: 50px 0;
-  text-shadow: 1px 0 1px #8c1b21, 0 1px 1px #8c1b21, -1px 0 1px #8c1b21,
-    0 -1px 1px #8c1b21;
 }
 
 .LogoWrapper {
@@ -21,12 +13,12 @@
 .CustomIcon {
   width: 40px;
   height: 40px;
-  color: teal;
+  color: #50c878;
 }
 
 .Title {
   font-size: 25px;
-  color: teal;
+  color: #50c878;
 
   @media (min-width: 768px) {
     font-size: 35px;
@@ -39,6 +31,7 @@
 
 .NavigationList {
   display: flex;
+  text-shadow: 1px 0 1px #50c878, 0 1px 1px #50c878, -1px 0 1px #50c878;
 }
 
 .Item {
@@ -52,9 +45,8 @@
 .CustomLink {
   font-size: 15px;
   font-weight: 700;
-  color: burlywood;
+  color: #50c878;
   transition: all 0.2s;
-  // transition: color ${mainHoverEfect};
 
   &.active {
     text-decoration: underline;
