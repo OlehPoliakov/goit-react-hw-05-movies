@@ -6,7 +6,7 @@ import styles from './MovieNavigation.module.scss';
 
 // Меню актёров и обзоров
 const MovieNavigation = () => {
-  const subLocation = useLocation();
+  const location = useLocation();
 
   return (
     <div className={styles.AdditionalWrapper}>
@@ -16,7 +16,7 @@ const MovieNavigation = () => {
           <NavLink
             className={styles.CustomLink}
             to="cast"
-            state={{ from: subLocation }}
+            state={{ from: location.state?.from }}
           >
             <FaChevronRight /> Cast
           </NavLink>
@@ -25,7 +25,7 @@ const MovieNavigation = () => {
           <NavLink
             className={styles.CustomLink}
             to="reviews"
-            state={{ from: subLocation }}
+            state={{ from: location.state?.from }}
           >
             <FaChevronRight /> Reviews
           </NavLink>

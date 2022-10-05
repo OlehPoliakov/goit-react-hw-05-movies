@@ -1,11 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import {
-  useParams,
-  useNavigate,
-  useLocation,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { useParams, useLocation, Routes, Route } from 'react-router-dom';
 
 import MovieDetails from 'components/MovieDetails';
 import MovieNavigation from 'components/MovieNavigation';
@@ -27,7 +21,6 @@ function MovieDetailsPage() {
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  const navigate = useNavigate();
 
   const { movieId } = useParams(); // Получаем id фильма из useParams
   // Запрос при маунте
@@ -51,11 +44,11 @@ function MovieDetailsPage() {
   };
 
   // Функция для кнопки "Назад"
-  const onGoBack = () => navigate(location?.state?.from ?? '/');
+  const onGoBack = location.state?.from ?? '/';
 
   return (
     <>
-      <GoBackButton onGoBack={onGoBack} />
+      <GoBackButton to={onGoBack} />
 
       {movieInfo && <MovieDetails movieInfo={movieInfo} />}
 
