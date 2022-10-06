@@ -38,9 +38,7 @@ const Cast = () => {
   };
 
   return (
-    <div>
-      {isLoading && <Loader />}
-
+    <>
       {actors.length > 0 ? (
         <ul className={styles.list}>
           {actors.map(({ id, profile_path, name, character }) => {
@@ -55,6 +53,8 @@ const Cast = () => {
         <p>There is no information about actors for this movie.</p>
       )}
 
+      {isLoading && <Loader />}
+
       {error && (
         <Message>
           <h2>
@@ -62,7 +62,7 @@ const Cast = () => {
           </h2>
         </Message>
       )}
-    </div>
+    </>
   );
 };
 

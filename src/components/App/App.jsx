@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Loader from 'components/Loader';
-// import { Layout } from 'components/Layout/Layout';
 
 const Layout = lazy(() =>
   import('../Layout/Layout' /* webpackChunkName: "home-page" */)

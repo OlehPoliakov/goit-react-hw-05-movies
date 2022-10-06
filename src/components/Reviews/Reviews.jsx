@@ -38,8 +38,6 @@ const Reviews = () => {
 
   return (
     <div>
-      {isLoading && <Loader />}
-
       {reviews.length > 0 ? (
         <ul className={styles.list}>
           {reviews.map(({ id, author, content }) => {
@@ -56,6 +54,8 @@ const Reviews = () => {
       ) : (
         <p>We don't have any reviews for this movie</p>
       )}
+
+      {isLoading && <Loader />}
 
       {error && (
         <Message>
