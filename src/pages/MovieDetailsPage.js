@@ -1,18 +1,11 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import { useParams, useLocation, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 
 import MovieDetails from 'components/MovieDetails';
 import MovieNavigation from 'components/MovieNavigation';
 import Loader from 'components/Loader';
 import GoBackButton from 'components/GoBackButton';
 import api from 'services/api';
-
-const Cast = lazy(() =>
-  import('components/Cast' /* webpackChunkName: "cast-view" */)
-);
-const Reviews = lazy(() =>
-  import('components/Reviews' /* webpackChunkName: "review-view" */)
-);
 
 function MovieDetailsPage() {
   const [movieInfo, setMovieInfo] = useState(null);
@@ -54,14 +47,8 @@ function MovieDetailsPage() {
 
       {movieInfo && <MovieNavigation />}
 
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Routes>
-      </Suspense>
-
       {isLoading && <Loader />}
+      <Outlet />
     </>
   );
 }

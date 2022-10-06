@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MoviePreview from 'components/MoviePreview';
 import styles from './MoviesList.module.scss';
 
 // Комопнент списка фильмов, принимает фильмы и location
-function MoviesList({ movies, location }) {
+function MoviesList({ movies }) {
+  const location = useLocation();
+
   return (
     <ul className={styles.list}>
       {movies.map(

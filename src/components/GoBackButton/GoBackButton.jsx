@@ -13,7 +13,7 @@ const GoBackButton = ({ to }) => (
 );
 
 GoBackButton.propTypes = {
-  to: PropTypes.func.isRequired,
+  to: PropTypes.object,
 };
 
 export default GoBackButton;
