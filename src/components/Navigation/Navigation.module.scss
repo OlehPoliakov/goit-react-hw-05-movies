@@ -36,7 +36,6 @@
 
 .Item {
   margin-right: 25px;
-
   &:last-child {
     margin-right: 0;
   }
@@ -45,12 +44,8 @@
 .CustomLink {
   font-size: 15px;
   font-weight: 700;
-  color: #50c878;
-  transition: all 0.2s;
 
-  &.active {
-    text-decoration: underline;
-  }
+  transition: all 0.2s;
 
   &:hover {
     color: blue;

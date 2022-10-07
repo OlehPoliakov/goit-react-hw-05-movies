@@ -3,6 +3,7 @@ const PageNotFound = () => (
     style={{
       padding: 20,
       textAlign: 'center',
+      color: 'gainsboro',
     }}
   >
     Error 404: Page Not Found{' '}
