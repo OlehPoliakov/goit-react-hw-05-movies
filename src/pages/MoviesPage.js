@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SearchBar from 'components/SearchBar';
@@ -9,8 +10,13 @@ import Loader from 'components/Loader';
 import api from 'services/api';
 // Компонент страницы поиска фильмов
 const MoviesPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
+
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(query || '');
   const [page, setPage] = useState(1);
   const [isLoading, setLoading] = useState(false);
   // eslint-disable-next-line
@@ -53,6 +59,12 @@ const MoviesPage = () => {
     setSearchQuery(query);
     setPage(1);
     setError(null);
+
+    // После поиска пишет в search истории шаблонную строку
+    navigate({
+      ...location,
+      search: `query=${query}`,
+    });
   };
 
   return (

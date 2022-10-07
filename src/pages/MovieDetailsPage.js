@@ -14,6 +14,8 @@ function MovieDetailsPage() {
   const [error, setError] = useState(null);
 
   const location = useLocation();
+  // Функция для кнопки "Назад"
+  const onGoBack = location.state?.from ?? '/';
 
   const { movieId } = useParams(); // Получаем id фильма из useParams
   // Запрос при маунте
@@ -35,9 +37,6 @@ function MovieDetailsPage() {
       setLoading(false);
     }
   };
-
-  // Функция для кнопки "Назад"
-  const onGoBack = location.state?.from ?? '/';
 
   return (
     <>

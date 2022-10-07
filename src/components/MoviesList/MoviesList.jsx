@@ -10,9 +10,12 @@ function MoviesList({ movies }) {
   return (
     <ul className={styles.list}>
       {movies.map(
-        ({ id, original_title, poster_path, vote_average, vote_count }) => {
+        (
+          { id, original_title, poster_path, vote_average, vote_count },
+          index
+        ) => {
           return (
-            <li key={id} className={styles.item}>
+            <li key={index} className={styles.item}>
               <Link
                 to={`/movies/${id}`}
                 state={{ from: location }}
