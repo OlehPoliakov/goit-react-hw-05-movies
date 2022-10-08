@@ -56,20 +56,20 @@ function MovieDetails({ movieInfo }) {
   );
 }
 
-MovieDetails.prototype = {
+MovieDetails.propTypes = {
   movieInfo: propTypes.shape({
-    title: propTypes.string,
+    original_title: propTypes.string,
     genres: propTypes.arrayOf(
       propTypes.shape({
         id: propTypes.number,
         name: propTypes.string,
       })
     ),
-    description: propTypes.string,
-    poster: propTypes.string,
-    releaseDate: propTypes.string,
-    voteAverage: propTypes.number,
-    voteCount: propTypes.number,
+    overview: propTypes.string,
+    poster_path: propTypes.string,
+    release_date: propTypes.string,
+    vote_average: propTypes.number,
+    vote_count: propTypes.number,
   }),
 };
 

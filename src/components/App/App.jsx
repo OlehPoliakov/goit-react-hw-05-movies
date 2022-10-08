@@ -16,15 +16,15 @@ const MovieDetailsPage = lazy(() =>
     '../../pages/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */
   )
 );
-const PageNotFound = lazy(() =>
-  import('../../pages/PageNotFound' /* webpackChunkName: "404-page" */)
-);
 const Cast = lazy(() =>
   import('../Cast/Cast' /* webpackChunkName: "cast-view" */)
 );
 const Reviews = lazy(() =>
   import('../Reviews/Reviews' /* webpackChunkName: "review-view" */)
 );
+// const PageNotFound = lazy(() =>
+//   import('../../pages/PageNotFound' /* webpackChunkName: "404-page" */)
+// );
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
     </Suspense>
