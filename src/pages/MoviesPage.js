@@ -24,8 +24,9 @@ const MoviesPage = () => {
 
   // При монтировании делает запрос за фильмами. Если в searchQuery пусто то ничего не делает.
   useEffect(() => {
-    if (!searchQuery) return;
-    getMovies();
+    if (searchQuery) {
+      getMovies();
+    }
     // eslint-disable-next-line
   }, [searchQuery]);
 
@@ -40,6 +41,8 @@ const MoviesPage = () => {
         toast.info('Nothing found 🙄', {
           autoClose: 2000,
         });
+        navigate('/movies');
+        return;
       }
 
       setMovies(prev => [...prev, ...results]);
